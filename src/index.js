@@ -6,7 +6,24 @@ import dotenv from "dotenv"
     path:'./env'
  })
   
-connectDB();
+connectDB().then(function(){
+  
+   /* app.on(event, callback)
+    Purpose: Attaches an event listener to the app object (which extends EventEmitter).
+    Use Case: Used to handle custom events like "error", "dbConnected", etc.*/
+     
+    app.on("error",function(err){
+        console.log("DB NOT CONNECTED !!")
+        throw err;
+     })
+
+    app.listen(process.env.PORT || 8000)
+    console.log(`Server is running at port: ${process.env.PORT}`)
+})
+.catch(function(err){
+    console.log("MONGODB CONNECTION FAILED !!!", err)
+})
+
 
 
 
