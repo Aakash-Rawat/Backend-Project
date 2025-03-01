@@ -1,6 +1,6 @@
 // require('dotenv').config({path: './env'})
 import dotenv from "dotenv"
- import connectDB from "./db/db.js";
+ import {connectDB} from "./db/db.js";
  import {app} from "./app.js"
 
  dotenv.config({
@@ -13,10 +13,10 @@ connectDB().then(function(){
     Purpose: Attaches an event listener to the app object (which extends EventEmitter).
     Use Case: Used to handle custom events like "error", "dbConnected", etc.*/
      
-    app.on("error",function(err){
-        console.log("DB NOT CONNECTED !!")
-        throw err;
-     })
+    // app.on("error",function(err){
+    //     console.log("DB NOT CONNECTED !!")
+    //     throw err;
+    //  })
 
     app.listen(process.env.PORT || 8000)
     console.log(`Server is running at port: ${process.env.PORT}`)

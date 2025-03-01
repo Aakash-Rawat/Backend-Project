@@ -1,5 +1,5 @@
-const asyncHandler = function(fn){
-    return function (req,res,next){
+const asyncHandler =  function(fn){
+    return function (req,res,err,next){
            Promise.resolve(fn(req,res,next))
                   .reject((err) => next(err))
       } 
